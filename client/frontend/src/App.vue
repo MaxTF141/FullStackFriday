@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
@@ -27,4 +27,23 @@ nav a {
 nav a.router-link-exact-active {
   color: #42b983;
 }
+</style> -->
+
+<template>
+  <NavBar />
+  <div class="container is-max-desktop">
+    <router-view />
+  </div>
+</template>
+<script>
+import NavBar from "./components/NavBar.vue";
+export default {
+  name: "App",
+  components: {
+    NavBar,
+  },
+};
+</script>
+<style>
+@import "bulma/css/bulma.css";
 </style>

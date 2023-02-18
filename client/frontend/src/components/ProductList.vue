@@ -13,7 +13,7 @@
           <tr v-for="item in items" :key="item.id">
             <td>{{ item.productName }}</td>
             <td>{{ item.productPrice }}</td>
-            <td><router-link :to="{name: 'Edit', params:{id: item.id} }" class="button is-info is-small">Edit</router-link>
+            <td> <router-link :to="{name: 'Edit', params:{id: item.id} }" class="button is-info is-small">Edit</router-link>
               <a class="button is-danger is-small" @click="deleteProduct(item.id)">DELETE</a>
             </td>
           </tr>
@@ -26,13 +26,14 @@
 import axios from "axios";
 
 export default {
+  name: "ProductList",
   data() {
     return {
       items: [],
     };
   },
   created() {
-    this.getProduct();
+    this.getProducts();
   },
   methods: {
     async getProducts() {
@@ -43,7 +44,7 @@ export default {
         console.log(err);
       }
     },
-    async deleteProduct() {
+    async deleteProduct(id) {
       try {
         await axios.delete(`http://localhost:2222/products/${id}`);
         this.getProducts();
